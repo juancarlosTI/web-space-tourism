@@ -3,7 +3,7 @@ import imgMarsPng from '../../assets/destination/image-mars.png';
 import imgEuropaPng from '../../assets/destination/image-europa.png';
 import imgTitanPng from '../../assets/destination/image-titan.png';
 import Exibition from '../Exibition/exibition';
-import backgroundDestination from '../../assets/destination/background-destination-desktop.jpg';
+// import backgroundDestination from '../../assets/destination/background-destination-desktop.jpg';
 import styled from "styled-components";
 
 //Data

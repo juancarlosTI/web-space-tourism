@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 //Data
-import objectsInfo from '../../assets/data.json';
+// import objectsInfo from '../../assets/data.json';
 
 
 const HomeComponent = () => {

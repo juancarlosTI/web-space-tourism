@@ -3,7 +3,7 @@ import memberDouglas from '../../assets/crew/image-douglas-hurley.png';
 import memberMark from '../../assets/crew/image-mark-shuttleworth.png';
 import memberVictor from '../../assets/crew/image-victor-glover.png';
 import Exibition from '../Exibition/exibition';
-import backgroundCrew from '../../assets/crew/background-crew-desktop.jpg';
+// import backgroundCrew from '../../assets/crew/background-crew-desktop.jpg';
 import styled from "styled-components";
 
 //Data

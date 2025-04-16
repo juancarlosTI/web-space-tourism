@@ -2,7 +2,7 @@ import memberAnousheh from '../../assets/crew/image-anousheh-ansari.png';
 import memberDouglas from '../../assets/crew/image-douglas-hurley.png';
 import memberMark from '../../assets/crew/image-mark-shuttleworth.png';
 import memberVictor from '../../assets/crew/image-victor-glover.png';
-import Exibition from '../Exibition/exibition';
+import Exibition from '../exibition';
 // import backgroundCrew from '../../assets/crew/background-crew-desktop.jpg';
 import styled from "styled-components";
 
@@ -25,6 +25,10 @@ class Crew extends Exibition {
 
     handleCrew(member) {
         this.setState((prevState) => ({ ...prevState, selectedCrewMember: member }))
+    }
+
+    render(){
+        return <CrewComponent handleCrew={this.handleCrew} selectedCrewMember={this.state.selectedCrewMember}/>
     }
 }
 
@@ -163,3 +167,5 @@ const CrewStyle = styled.div`
     }
     
 `
+
+export default Crew;

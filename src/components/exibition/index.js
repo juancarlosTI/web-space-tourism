@@ -1,5 +1,6 @@
 // Imports
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //Data
@@ -20,7 +21,9 @@ const HomeComponent = () => {
             </div>
             <div className="right">
                 <div className="start-with">
-                    <p className={`big-explore`}>Explore</p>
+                    <Link to="/destination">
+                        <p className={`big-explore`}>Explore</p>
+                    </Link>
                 </div>
             </div>
         </HomeStyle>
@@ -79,6 +82,9 @@ const HomeStyle = styled.div`
         justify-content:flex-end;
         align-items:flex-end;
 
+        a {
+            text-decoration:none;
+        }
         .big-explore {
             color: rgba(0,0,0,1);
             background-color:white;

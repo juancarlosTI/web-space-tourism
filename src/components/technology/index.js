@@ -1,4 +1,4 @@
-import Exibition from "../Exibition/exibition";
+import Exibition from "../exibition";
 import launchVehicle from '../../assets/technology/image-launch-vehicle-portrait.jpg';
 import spaceCapsule from '../../assets/technology/image-space-capsule-portrait.jpg';
 import spacePort from '../../assets/technology/image-spaceport-portrait.jpg';
@@ -7,7 +7,6 @@ import forwardArrow from '../../assets/Icons/arrow_forward_24px.png';
 import styled from "styled-components";
 
 //Data
-
 import objectsInfo from '../../assets/data.json';
 
 
@@ -16,7 +15,7 @@ import objectsInfo from '../../assets/data.json';
 class Technology extends Exibition {
 
     constructor(){
-
+        super()
         this.state = {
             selectedTech: 2,
             openInfo: false
@@ -54,6 +53,10 @@ class Technology extends Exibition {
             
         }
         console.log(this.state.openInfo)
+    }
+
+    render(){
+        return <TechnologyComponent selectedTech={this.state.selectedTech} handleNextBtn={this.handleNextBtn} handleBackBtn={this.handleBackBtn} handleInfo={this.handleInfo} openInfo={this.handleInfo}/>
     }
 
 
@@ -188,3 +191,5 @@ const TechnologyStyle = styled.div`
     }
     
 `
+
+export default Technology;

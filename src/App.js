@@ -1,8 +1,10 @@
 import './App.css';
-import Exibition from './components/exibition';
 import Layout from './components/Layout';
 import GlobalStyle from './globalStyles';
 import styled from "styled-components";
+import { AppRoutes } from './pages/routes';
+import { BrowserRouter } from 'react-router-dom';
+
 
 // Imagens
 import backgroundHome from './assets/home/background-home-desktop.jpg';
@@ -10,13 +12,14 @@ import backgroundHome from './assets/home/background-home-desktop.jpg';
 
 function App() {
   return (
-    <Container background={backgroundHome}>
-      <Layout>
-        <GlobalStyle />
-        <Exibition/>
-      </Layout>
-    </Container>
-
+    <BrowserRouter>
+      <Container background={backgroundHome}>
+        <Layout>
+          <GlobalStyle />
+          <AppRoutes />
+        </Layout>
+      </Container>
+    </BrowserRouter>
   );
 }
 

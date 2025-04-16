@@ -2,7 +2,7 @@ import imgMoonPng from '../../assets/destination/image-moon.png';
 import imgMarsPng from '../../assets/destination/image-mars.png';
 import imgEuropaPng from '../../assets/destination/image-europa.png';
 import imgTitanPng from '../../assets/destination/image-titan.png';
-import Exibition from '../Exibition/exibition';
+import Exibition from '../exibition';
 // import backgroundDestination from '../../assets/destination/background-destination-desktop.jpg';
 import styled from "styled-components";
 
@@ -10,26 +10,6 @@ import styled from "styled-components";
 
 import objectsInfo from '../../assets/data.json';
 
-
-// Destination
-
-class Destination extends Exibition {
-    constructor(){
-        this.state = {
-            selectedDestination: 0
-        }
-
-        
-        this.handleDestination = this.handleDestination.bind(this);
-    }
-
-    handleDestination(destination) {
-        this.setState((prevState) => ({ ...prevState, selectedDestination: destination }))
-    }
-    
-
-
-}
 
 const DestinationComponent = ({ selectedDestination, handleDestination }) => {
 
@@ -67,6 +47,30 @@ const DestinationComponent = ({ selectedDestination, handleDestination }) => {
     )
 }
 
+
+
+// Destination
+
+class Destination extends Exibition {
+    constructor(){
+        super()
+        this.state = {
+            selectedDestination: 0
+        }
+
+        
+        this.handleDestination = this.handleDestination.bind(this);
+    }
+
+    handleDestination(destination) {
+        this.setState((prevState) => ({ ...prevState, selectedDestination: destination }))
+    }
+    
+    render(){
+        return <DestinationComponent handleDestination={this.handleDestination} selectedDestination={this.state.selectedDestination}/>
+    }
+
+}
 
 const DestinationStyle = styled.div`
     display:grid;
@@ -195,3 +199,5 @@ const DestinationStyle = styled.div`
 
     
 `
+
+export default Destination;

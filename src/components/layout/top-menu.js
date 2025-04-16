@@ -65,9 +65,9 @@ const Header = styled.header`
     display:flex;
     max-width:100vw;
     width:100%;
-    height:100px;
+    min-height:100px;
     position:relative;
-    margin-bottom:120px;
+    //margin-bottom:120px;
     
 
     img {
@@ -87,23 +87,27 @@ const Header = styled.header`
 
     @media(max-width:768px){
         margin-bottom:70px;
+
+        .straigth-line {
+            display:none;
+        }
     }
 `
 
 const Menu = styled.ul`
     display: flex;
+    width:100%;
     list-style-type: none;
     margin:0;
     padding:0 30px;
-    height:100px;
+    min-height:100px;
     background:transparent;
     backdrop-filter: blur(20px);
     position:relative;
     right: 100px;
-    align-items:center;
+    align-items: center;
 
     a {
-        //display:flex;
         text-decoration:none;
         color:inherit;
         padding:0;
@@ -137,6 +141,10 @@ const Menu = styled.ul`
 
     .menu-number {
          margin-right: 8px;  /* espaço entre número e texto */
+    }
+
+    @media(max-width:768px){
+        display:none;
     }
 `
 

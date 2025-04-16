@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 };
 
 const Main = styled.main`
-  flex: 1;
+  //
 `;
 
 export default Layout;

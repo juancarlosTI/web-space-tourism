@@ -3,11 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
 //Data
 // import objectsInfo from '../../assets/data.json';
 
 
 const HomeComponent = () => {
+
     return (
         <HomeStyle>
             <div className="left">
@@ -41,19 +43,25 @@ class Exibition extends React.Component {
 
 
 const HomeStyle = styled.div`
-    display:grid;
-    grid-template-areas: "left-side right-side";
-    grid-template-columns: 50% 50%;
+    display:flex;
+    padding: 0 90px;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    min-height:auto;
+    margin-top:100px;
 
     .left {
-        grid-area: left-side;
         display:flex;
         flex-direction:column;
+        max-width:50vw;
         width:100%;
         align-items:center;
+        justify-content:center;
 
         .text-description {
-            width:65%;
+            max-width:340px;
+            width:100%;
 
             .intro {
                 font-size:28px;
@@ -62,8 +70,9 @@ const HomeStyle = styled.div`
 
             .space-text {
                 text-transform:uppercase;
-                font-size:124px;
+                font-size:11.5vw;
                 margin:0;
+                //overflow-wrap: break-word;
             }
 
             .description {
@@ -75,16 +84,16 @@ const HomeStyle = styled.div`
     }
 
     .right {
-        grid-area: right-side;
         display:flex;
+        max-width:50vw;
         width:100%;
-        flex-direction:column;
-        justify-content:flex-end;
-        align-items:flex-end;
+        position:relative;
+        justify-content:center;
 
         a {
             text-decoration:none;
         }
+
         .big-explore {
             color: rgba(0,0,0,1);
             background-color:white;
@@ -121,36 +130,7 @@ const HomeStyle = styled.div`
     }
 
     .start-with {
-        width:65%;
-    }
-
-    
-
-    @media(max-width:768px){
-        .left {
-            .text-description {
-                .intro {
-                    font-size:18px;
-                }
-
-                .space-text {
-                    font-size:90px;
-                }
-
-                .description {
-                    font-size:14px;
-                }
-            }
-        }
-
-        .right {
-            .big-explore {
-                width:200px;
-                height:200px;
-            }
-        }
-        
-        
+        //width:65%;
     }
 
     @keyframes pulse {
@@ -166,6 +146,23 @@ const HomeStyle = styled.div`
             height:650px;
             opacity:0;
             box-shadow: 0 0 50px 100px rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    @media(max-width:768px){
+        flex-direction:column;
+        margin:0;
+
+        .left, .right {
+            max-width:100%;
+        }
+
+        .right {
+            justify-content:center;
+
+            .big-explore {
+                margin-top:50px;
+            }
         }
     }
 

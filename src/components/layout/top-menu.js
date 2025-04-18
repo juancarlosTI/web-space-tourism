@@ -1,18 +1,25 @@
 import styled from "styled-components";
 
 import Logo from '../../assets/shared/logo.svg';
+import MenuMobile from '../../assets/Icons/menu-mobile.png';
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const TopMenu = () => {
 
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(prev => !prev);
+    };
 
     return (
         <Header>
-            <img src={Logo} alt="logo" />
+            <img className="image-logo" src={Logo} alt="logo" />
             <div className="straigth-line" />
 
-            <Menu>
+            <Menu className={isMenuOpen ? "open":""}>
 
                 <li className={`menu-li ${location.pathname === "/" ? "page-active":""}`}>
                     <StyledLink to="/">
@@ -44,9 +51,11 @@ const TopMenu = () => {
                         <span className="menu-label">Technology</span>
                     </StyledLink>
                 </li>
-
-
+                <p className={`menu-mobile-close ${isMenuOpen ? "show":"hide"}`} alt="hide-menu" onClick={toggleMenu}>Hide ^^^
+                    {/* <img src="" alt=""/> */}
+                </p>
             </Menu>
+            <img className="menu-mobile" src={MenuMobile} alt="menu-mobile" onClick={toggleMenu}/>
         </Header >
     )
 }
@@ -67,10 +76,9 @@ const Header = styled.header`
     width:100%;
     min-height:100px;
     position:relative;
-    //margin-bottom:120px;
-    
+    margin-bottom:20px;  
 
-    img {
+    .image-logo {
         margin:0 50px;
         width:50px;
         height:50px;
@@ -85,11 +93,43 @@ const Header = styled.header`
         position:relative;
     }
 
+    .menu-mobile {
+        display:none;
+    }
+
+    .menu-mobile-close {
+        display:none;
+    }
+
     @media(max-width:768px){
-        margin-bottom:70px;
+        
+        justify-content: space-between;
+        align-items:center;
 
         .straigth-line {
             display:none;
+        }
+
+        .menu-mobile {
+            display:flex;
+            margin: 0 50px;
+            max-width:32px;
+            max-height:32px;
+            width:100%;
+            height:100%;
+            cursor:pointer;
+        }
+
+        .menu-mobile-close {
+            &.show{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                border-radius:15px;
+                background-color:grey;
+                width:100px;
+                height:32px;
+            }
         }
     }
 `
@@ -116,6 +156,7 @@ const Menu = styled.ul`
     
     li {
         flex: 0 0 90px;
+        max-width:120px;
         box-sizing:border-box;
         width:100%;
         height:100%;
@@ -134,17 +175,24 @@ const Menu = styled.ul`
         border-bottom: 2px solid white;
     }
 
-        
-    // .menu-item {
-    //     margin-right:5px;
-    // }
-
     .menu-number {
-         margin-right: 8px;  /* espaço entre número e texto */
+        margin-right: 8px;  /* espaço entre número e texto */
     }
 
     @media(max-width:768px){
         display:none;
+        flex-direction:column;
+        position:fixed;
+        top:0;
+        right:0;
+        padding-bottom:20px;
+        z-index:500;
+        border: 1px solid white;
+        border-radius:5px;
+
+        &.open {
+            display:flex;
+        }
     }
 `
 

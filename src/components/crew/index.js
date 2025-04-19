@@ -70,8 +70,9 @@ const CrewComponent = ({ selectedCrewMember, handleCrew }) => {
 const CrewStyle = styled.div`
     display:flex;
     flex-direction:column;
-    width:100vw;
-    height:100vh;
+    max-width:100vw;
+    width:100%;
+    min-height:100vh;
     align-self:center;
     position:relative;
     
@@ -82,6 +83,7 @@ const CrewStyle = styled.div`
         display:flex;
         align-items:center;
         justify-content:center;
+        max-width:100%;
         width:100%;
         height:320px;
         background-color:black;
@@ -114,15 +116,16 @@ const CrewStyle = styled.div`
         display:flex;
         flex-direction:column;
         align-items:center;
-        width:100vw;
+        max-width:100vw;
+        width:100%;
         margin: 20px 0;
-        position:absolute;
+        // position:absolute;
         top:-90px;
 
         ul {
             list-style-type:none;
             display:flex;
-            width:500px;
+            max-width:500px;
             justify-content:center;
             align-items:center;
 

@@ -3,7 +3,6 @@ import launchVehicle from '../../assets/technology/image-launch-vehicle-portrait
 import spaceCapsule from '../../assets/technology/image-space-capsule-portrait.jpg';
 import spacePort from '../../assets/technology/image-spaceport-portrait.jpg';
 import forwardArrow from '../../assets/Icons/arrow_forward_24px.png';
-// import backgroundTechnology from '../../assets/technology/background-technology-desktop.jpg';
 import styled from "styled-components";
 
 //Data
@@ -194,6 +193,7 @@ const TechnologyStyle = styled.div`
         
         .left {
             max-width:100vw;
+
             .carrossel {
                 max-width:480px;
                 width:100%;
@@ -203,8 +203,6 @@ const TechnologyStyle = styled.div`
                     max-width:480px;
                     width:100%;
                     min-width:320px;
-                    object-fit: cover;
-
                 }
 
                 .img-btn-left, img-btn-right {

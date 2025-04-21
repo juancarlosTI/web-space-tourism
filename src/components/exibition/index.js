@@ -114,8 +114,8 @@ const HomeStyle = styled.div`
         .big-explore::after {
             content: "";
             position: fixed;
-            width: 0%;
-            height: 0%;
+            width: 0;
+            height: 0;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
         }
@@ -129,9 +129,6 @@ const HomeStyle = styled.div`
         }
     }
 
-    .start-with {
-        //width:65%;
-    }
 
     @keyframes pulse {
         0% {

@@ -1,6 +1,5 @@
 
 import Exibition from '../exibition';
-// import backgroundDestination from '../../assets/destination/background-destination-desktop.jpg';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "motion/react"
 
@@ -22,7 +21,7 @@ const DestinationComponent = ({ selectedDestination, handleDestination, isMobile
         <DestinationStyle $isMobile={isMobile}>
 
             <motion.div className="left" layout layoutDependency={isMobile} style={{ display: "flex", flexDirection: isMobile ? "column" : "row" }}
-                key={isMobile ? "mobile" : "desktop"} // <- ESSENCIAL para animação funcionar
+                key={isMobile ? "mobile" : "desktop"}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 initial={{ y: 50 }}
                 animate={{y: 0 }}
@@ -121,25 +120,23 @@ class Destination extends Exibition {
 const DestinationStyle = styled.div`
     display:flex;
     gap:20px;
-    //grid-template-areas: "left-side right-side";
-    //grid-template-columns: 50% 50%;
-    //align-items:center;
-    max-width:100%;
+    
     width:100%;
+    justify-content:center;
     
     .left {
-        grid-area: left-side;
         display:flex;
         width:100%;
-        //align-items:center;
-        justify-content:center;
+        align-items:center;
+        margin-bottom:30px;
+        padding-left:45px;
 
         .main {
             display:flex;
             flex-direction:column;
-            text-align:center;
+            align-items:center;
             box-sizing:border-box;
-            padding-left:45px;
+            
 
             .destination-name {
                 font-size:48px;
@@ -160,7 +157,7 @@ const DestinationStyle = styled.div`
         }
 
         .destination-description {
-            margin-left:40px;
+            margin-left:80px;
             max-width:220px;
             width:100%;
             align-self:center;
@@ -214,6 +211,34 @@ const DestinationStyle = styled.div`
             height:40px;
             margin-right:20px;
         }
+    }
+
+    @media(max-width:768px) {
+        .left {
+            
+
+            .destination-description {
+                margin-left:0;
+                margin-top:50px;
+            }
+        }
+    }
+
+    @media(max-width:525px) {
+        flex-direction:column;
+        align-items:center;
+
+        .left {
+            padding:0;
+            .main {
+                padding:0;
+            }
+        }
+
+        .right {
+            margin-bottom:30px;
+        }
+        
     }
 
 `

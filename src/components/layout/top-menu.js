@@ -51,8 +51,7 @@ const TopMenu = () => {
                         <span className="menu-label">Technology</span>
                     </StyledLink>
                 </li>
-                <p className={`menu-mobile-close ${isMenuOpen ? "show":"hide"}`} alt="hide-menu" onClick={toggleMenu}>Hide ^^^
-                    {/* <img src="" alt=""/> */}
+                <p className={`btn-menu-mobile-close ${isMenuOpen ? "show":"hide"}`} alt="hide-menu" onClick={toggleMenu}>Hide
                 </p>
             </Menu>
             <img className="menu-mobile" src={MenuMobile} alt="menu-mobile" onClick={toggleMenu}/>
@@ -97,7 +96,7 @@ const Header = styled.header`
         display:none;
     }
 
-    .menu-mobile-close {
+    .btn-menu-mobile-close {
         display:none;
     }
 
@@ -120,8 +119,9 @@ const Header = styled.header`
             cursor:pointer;
         }
 
-        .menu-mobile-close {
+        .btn-menu-mobile-close {
             &.show{
+                position:relative;
                 display:flex;
                 justify-content:center;
                 align-items:center;
@@ -129,7 +129,15 @@ const Header = styled.header`
                 background-color:grey;
                 width:100px;
                 height:32px;
+                margin-bottom:20px;
+                top:20px;
             }
+        }
+
+        .btn-menu-mobile-close:hover {
+            background-color: white;
+            color:black;
+            transition-duration: 0.5s;
         }
     }
 `
@@ -139,7 +147,7 @@ const Menu = styled.ul`
     width:100%;
     list-style-type: none;
     margin:0;
-    padding:0 30px;
+    //padding:0 30px;
     min-height:100px;
     background:transparent;
     backdrop-filter: blur(20px);

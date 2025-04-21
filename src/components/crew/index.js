@@ -2,12 +2,10 @@ import memberAnousheh from '../../assets/crew/image-anousheh-ansari.png';
 import memberDouglas from '../../assets/crew/image-douglas-hurley.png';
 import memberMark from '../../assets/crew/image-mark-shuttleworth.png';
 import memberVictor from '../../assets/crew/image-victor-glover.png';
-import Exibition from '../Exibition/exibition';
-import backgroundCrew from '../../assets/crew/background-crew-desktop.jpg';
+import Exibition from '../exibition';
 import styled from "styled-components";
 
 //Data
-
 import objectsInfo from '../../assets/data.json';
 
 
@@ -25,6 +23,10 @@ class Crew extends Exibition {
 
     handleCrew(member) {
         this.setState((prevState) => ({ ...prevState, selectedCrewMember: member }))
+    }
+
+    render(){
+        return <CrewComponent handleCrew={this.handleCrew} selectedCrewMember={this.state.selectedCrewMember}/>
     }
 }
 
@@ -66,9 +68,9 @@ const CrewComponent = ({ selectedCrewMember, handleCrew }) => {
 const CrewStyle = styled.div`
     display:flex;
     flex-direction:column;
-    width:100vw;
-    height:100vh;
-    align-self:center;
+    max-width:100vw;
+    width:100%;
+    min-height:auto;
     position:relative;
     
     
@@ -77,11 +79,13 @@ const CrewStyle = styled.div`
         position:relative;
         display:flex;
         align-items:center;
-        justify-content:center;
+        //margin: 0 auto;
         width:100%;
-        height:320px;
+        justify-content:center;
+        min-height:320px;
+        height:auto;
         background-color:black;
-        margin-top:70px;
+        overflow-wrap: break-word;
 
         img {
             width:200px;
@@ -89,16 +93,17 @@ const CrewStyle = styled.div`
         }
 
         .member-description {
-            width:300px;
+            display:flex;
+            flex-direction:column;
+            max-width:300px;
+            width:100%;
+            height:auto;
             margin-left:20px;
-            //background-color:blue;
         }
 
         .member-name {
             font-size: 32px;
         }
-
-        .member-role {}
 
         .member-bio {
             margin-top: 20px;
@@ -110,15 +115,17 @@ const CrewStyle = styled.div`
         display:flex;
         flex-direction:column;
         align-items:center;
-        width:100vw;
+        max-width:100vw;
+        width:100%;
         margin: 20px 0;
-        position:absolute;
+        // position:absolute;
         top:-90px;
 
         ul {
             list-style-type:none;
             display:flex;
-            width:500px;
+            max-width:500px;
+            width:100%;
             justify-content:center;
             align-items:center;
 
@@ -126,8 +133,8 @@ const CrewStyle = styled.div`
                 display:flex;
                 color:black;
                 background-color:white;
-                width:110px;
-                height:110px;
+                flex: 0 1 90px;
+                height: 90px;
                 border-radius:50%;
                 text-align:center;
                 justify-content:center;
@@ -136,30 +143,18 @@ const CrewStyle = styled.div`
                 margin: 0 10px;
             }
         }
-        
     }
-
-    
-    
-
-    
 
     @media(max-width:768px){
         .big-member{
-            height:260px;
+
 
             img {
                 width:180px;
             }
         }
-
-        .listed-members {
-            ul .crew-item {
-                width:90px;
-                height:90px;
-                font-size:14px;
-            }
-        }
     }
     
 `
+
+export default Crew;

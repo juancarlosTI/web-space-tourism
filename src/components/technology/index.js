@@ -1,13 +1,11 @@
-import Exibition from "../Exibition/exibition";
+import Exibition from "../exibition";
 import launchVehicle from '../../assets/technology/image-launch-vehicle-portrait.jpg';
 import spaceCapsule from '../../assets/technology/image-space-capsule-portrait.jpg';
 import spacePort from '../../assets/technology/image-spaceport-portrait.jpg';
 import forwardArrow from '../../assets/Icons/arrow_forward_24px.png';
-import backgroundTechnology from '../../assets/technology/background-technology-desktop.jpg';
 import styled from "styled-components";
 
 //Data
-
 import objectsInfo from '../../assets/data.json';
 
 
@@ -15,18 +13,18 @@ import objectsInfo from '../../assets/data.json';
 //Technology
 class Technology extends Exibition {
 
-    constructor(){
-
+    constructor() {
+        super()
         this.state = {
             selectedTech: 2,
             openInfo: false
         }
-        
+
         this.handleNextBtn = this.handleNextBtn.bind(this);
         this.handleBackBtn = this.handleBackBtn.bind(this);
         this.handleInfo = this.handleInfo.bind(this);
     }
-    
+
     handleNextBtn() {
         if (this.state.selectedTech < 2) {
             this.setState((prevState) => ({ ...prevState, selectedTech: prevState.selectedTech + 1 }))
@@ -44,16 +42,20 @@ class Technology extends Exibition {
 
     }
 
-    handleInfo(){
+    handleInfo() {
 
-        if (this.state.openInfo){
-            this.setState((prevState) => ({...prevState, openInfo: false}))
-            
+        if (this.state.openInfo) {
+            this.setState((prevState) => ({ ...prevState, openInfo: false }))
+
         } else {
-            this.setState((prevState) => ({...prevState, openInfo: true}))
-            
+            this.setState((prevState) => ({ ...prevState, openInfo: true }))
+
         }
         console.log(this.state.openInfo)
+    }
+
+    render() {
+        return <TechnologyComponent selectedTech={this.state.selectedTech} handleNextBtn={this.handleNextBtn} handleBackBtn={this.handleBackBtn} handleInfo={this.handleInfo} openInfo={this.handleInfo} />
     }
 
 
@@ -73,22 +75,23 @@ const TechnologyComponent = ({ selectedTech, handleNextBtn, handleBackBtn, handl
         <TechnologyStyle>
             <div className="left">
                 <div className="carrossel">
-                    <div className="btn left" >
-                        <img onClick={handleBackBtn} src={forwardArrow} alt="left" />
+                    <div className="btn btn-left" >
+                        <img className="img-btn-left" onClick={handleBackBtn} src={forwardArrow} alt="left" />
                     </div>
-                    <div className={`slider`}>
+                    <div className="slider">
                         <img id="carrossel-img" onClick={handleInfo} src={imagePath} alt="Technology" />
                     </div>
-                    <div className="btn right">
-                        <img onClick={handleNextBtn} src={forwardArrow} alt="right" />
+                    <div className="btn btn-right">
+                        <img className="img-btn-right" onClick={handleNextBtn} src={forwardArrow} alt="right" />
                     </div>
                 </div>
             </div>
             <div className="right">
-                <ul>
-                    <p className="tech-name">{objectsInfo.technology[selectedTech].name}</p>
-                    <p className="tech-description">{objectsInfo.technology[selectedTech].description}</p>
-                </ul>
+                <p className="tech-name">{objectsInfo.technology[selectedTech].name}</p>
+                <p className="tech-description">{objectsInfo.technology[selectedTech].description}</p>
+            </div>
+            <div className="footer">
+
             </div>
         </TechnologyStyle>
     )
@@ -96,40 +99,40 @@ const TechnologyComponent = ({ selectedTech, handleNextBtn, handleBackBtn, handl
 
 
 const TechnologyStyle = styled.div`
-    display:grid;
-    grid-template-areas: "left-side right-side";
-    grid-template-columns: 70% 30%;
+    display:flex;
     align-items:center;
+    max-width:100vw;
+    width:100%;
+    
 
     .left {
-        grid-area: left-side;
         display:flex;
         flex-direction:column;
         align-items:center;
-        width:100%;
+        width:60vw;
+        justify-content:center;
         
-
-        img {
-            width:450px;
-            height:380px;
+        .slider img {
+            width:100%;
+            height:100%;
         }
 
         .carrossel {
             position:relative;
             display:flex;
             flex-direction:row;
-            align-items:center;
-            justify-content:center;
-            width:100%;
-            //background-color:white;
+            align-items:center;            
+            width:480px;
 
             .btn {
-                min-width:max-content;
-                width:auto;
-                overflow:hidden;
+                display:flex;
+                width:32px;
+                height:32px;
                 border-radius:50%;
                 background-color:white;
                 opacity:0.3;
+                justify-content:center;
+                align-items:center;
             }
 
             .btn:hover {
@@ -137,54 +140,85 @@ const TechnologyStyle = styled.div`
                 opacity:1;
             }
 
-            .btn img {
-                
+            .img-btn-left, .img-btn-right {
                 width:24px;
                 height:24px;
             }
 
-            .left {
+            .btn-left {
                 transform: rotate(-180deg) translateX(-40px);
             }
 
-            .right {
+            .btn-right {
                 transform: translateX(-40px);
             }
 
             .slider {
                 display:flex;
                 align-items:center;
-                justify-content:center;
-                
+                width:480px;
+                height:20rem;
             }
         }
     }
 
     .right {
-        grid-area: right-side;
         display:flex;
         flex-direction:column;
         align-items:center;
-        justify-content:center;
-        width:80%;
+        max-width:50vh;
+        width:100%;
+        border-sizing: border-box;
+        padding-right:20px;
+        text-align:center;
 
         .tech-name {
             font-size:36px;
-            
+            width:100%;
         }
 
         .tech-description {
             margin-top:30px;
+            width:100%;
         }
+    }
+
+    .footer {
+        height:50px;
     }
 
 
     @media(max-width:768px){
+        flex-direction:column;
+        
         .left {
-            img {
-                width:420px;
+            max-width:100vw;
+
+            .carrossel {
+                max-width:480px;
+                width:100%;
+                justify-content:center;
+
+                .slider img {
+                    max-width:480px;
+                    width:100%;
+                    min-width:320px;
+                }
+
+                .img-btn-left, img-btn-right {
+                    width:24px;
+                    height:24px;
+                }
             }
+        }
+
+        .right {
+            max-width:100vw;
+            padding-right:0;
+            margin-top:30px;
         }
     }
     
 `
+
+export default Technology;
